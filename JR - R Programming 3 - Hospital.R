@@ -37,23 +37,23 @@ best <- function(State, Outcome){
                 print("Input Error! State abbrevation not found")
         }
         else if(any(Outcome %in% names(outcome[2:5])) == FALSE){
-                cat('Input Error! Available outcomes are: "heart attack", "heart failure" and "pneumonia"')
+                print('Input Error! Available outcomes are: "heart attack", "heart failure" and "pneumonia"')
         }
         else{
                 subdata <- subset(outcome, state == State)
                 if(Outcome == "heart attack"){
                         subdata <- subdata[,c(1,3)]
-                        subdata <- subdata[order(subdata[2], subdata[1] na.last = NA),]
+                        subdata <- subdata[order(subdata[2], subdata[1], na.last = NA),]
                         print(subdata$hospital[1])
                 }
                 else if(Outcome == "heart failure"){
                         subdata <- subdata[,c(1,4)]
-                        subdata <- subdata[order(subdata[2], subdata[1] na.last = NA),]
+                        subdata <- subdata[order(subdata[2], subdata[1], na.last = NA),]
                         print(subdata$hospital[1])
                 }
                 else{
                         subdata <- subdata[,c(1,5)]
-                        subdata <- subdata[order(subdata[2], subdata[1] na.last = NA),]
+                        subdata <- subdata[order(subdata[2], subdata[1], na.last = NA),]
                         print(subdata$hospital[1])
                 }
         }
